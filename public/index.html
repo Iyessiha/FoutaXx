@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FoutaX - Education financiere mobile</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand" aria-label="FoutaX">
+          <span class="brand-mark">FX</span>
+          <span class="brand-name">Fouta<span>X</span></span>
+        </div>
+        <button class="icon-button" type="button" aria-label="Notifications">
+          <span></span>
+        </button>
+      </header>
+
+      <main class="screen">
+        <section class="hero-panel">
+          <div>
+            <p class="eyebrow">Bonjour <span id="userName">Awa</span></p>
+            <h1>Apprends, planifie, simule.</h1>
+            <p class="hero-copy" id="dailyInsight">
+              Ton prochain bon choix financier commence par une information claire.
+            </p>
+          </div>
+          <div class="level-card">
+            <span id="levelName">N3</span>
+            <strong id="xp">1240 XP</strong>
+            <small id="planName">Gratuit</small>
+          </div>
+        </section>
+
+        <section class="quick-grid" aria-label="Indicateurs principaux">
+          <article class="metric-card">
+            <span>Score</span>
+            <strong id="score">--</strong>
+            <small>Sante financiere</small>
+          </article>
+          <article class="metric-card">
+            <span>Budget</span>
+            <strong id="budgetRemaining">--</strong>
+            <small>reste ce mois</small>
+          </article>
+          <article class="metric-card">
+            <span>Portefeuille</span>
+            <strong id="portfolioValue">--</strong>
+            <small id="portfolioRisk">risque modere</small>
+          </article>
+        </section>
+
+        <section class="tab-content active" data-panel="home">
+          <div class="section-heading">
+            <h2>Prochaine action</h2>
+            <button class="text-button" type="button" data-open-panel="learn">Continuer</button>
+          </div>
+          <article class="feature-card">
+            <div class="card-icon card-icon-teal">A</div>
+            <div>
+              <h3 id="nextLessonTitle">Lire un bulletin de bourse</h3>
+              <p id="nextLessonMeta">7 min - cours gratuit</p>
+            </div>
+          </article>
+
+          <div class="section-heading">
+            <h2>Objectif prioritaire</h2>
+            <span id="goalPercent">--</span>
+          </div>
+          <article class="progress-card">
+            <div>
+              <strong id="goalName">Fonds d'urgence</strong>
+              <p id="goalText">--</p>
+            </div>
+            <div class="progress-track">
+              <span id="goalBar"></span>
+            </div>
+          </article>
+
+          <div class="section-heading">
+            <h2>Abonnements</h2>
+            <button class="text-button" type="button" data-open-panel="plans">Voir</button>
+          </div>
+          <div class="plans-preview" id="plansPreview"></div>
+        </section>
+
+        <section class="tab-content" data-panel="budget">
+          <div class="section-heading">
+            <h2>Budget</h2>
+            <button class="primary-small" type="button">Ajouter</button>
+          </div>
+          <div class="budget-list" id="budgetList"></div>
+
+          <div class="section-heading">
+            <h2>Dernieres depenses</h2>
+          </div>
+          <div class="activity-list" id="recentExpenses"></div>
+        </section>
+
+        <section class="tab-content" data-panel="learn">
+          <div class="section-heading">
+            <h2>Apprendre</h2>
+            <span>XP + badges</span>
+          </div>
+          <div class="course-list" id="courseList"></div>
+        </section>
+
+        <section class="tab-content" data-panel="explore">
+          <div class="section-heading">
+            <h2>Explorer</h2>
+            <span>Afrique + monde</span>
+          </div>
+          <div class="search-box">
+            <input id="marketSearch" type="search" placeholder="Rechercher une bourse, un pays..." />
+          </div>
+          <div class="market-list" id="marketList"></div>
+        </section>
+
+        <section class="tab-content" data-panel="portfolio">
+          <div class="section-heading">
+            <h2>Portefeuille</h2>
+            <span>manuel + virtuel</span>
+          </div>
+          <article class="feature-card">
+            <div class="card-icon card-icon-gold">R</div>
+            <div>
+              <h3>Radar de risque</h3>
+              <p id="riskScore">--</p>
+            </div>
+          </article>
+          <div class="asset-list" id="assetList"></div>
+        </section>
+
+        <section class="tab-content" data-panel="plans">
+          <div class="section-heading">
+            <h2>Abonnements</h2>
+            <span>Freemium</span>
+          </div>
+          <div class="plan-list" id="planList"></div>
+        </section>
+      </main>
+
+      <button class="fab" type="button" id="simulateButton" aria-label="Lancer une simulation">
+        Simuler
+      </button>
+
+      <nav class="bottom-nav" aria-label="Navigation principale">
+        <button class="nav-item active" type="button" data-tab="home">
+          <span>Accueil</span>
+        </button>
+        <button class="nav-item" type="button" data-tab="budget">
+          <span>Budget</span>
+        </button>
+        <button class="nav-item" type="button" data-tab="learn">
+          <span>Apprendre</span>
+        </button>
+        <button class="nav-item" type="button" data-tab="explore">
+          <span>Explorer</span>
+        </button>
+        <button class="nav-item" type="button" data-tab="portfolio">
+          <span>Portefeuille</span>
+        </button>
+      </nav>
+    </div>
+
+    <dialog class="modal" id="simulationModal">
+      <form method="dialog">
+        <div class="section-heading">
+          <h2>Simulation d'epargne</h2>
+          <button class="ghost-button" value="close" aria-label="Fermer">Fermer</button>
+        </div>
+        <label>
+          Montant mensuel
+          <input id="simMonthly" type="number" value="25000" min="1000" />
+        </label>
+        <label>
+          Duree en mois
+          <input id="simMonths" type="number" value="12" min="1" />
+        </label>
+        <label>
+          Rendement annuel estime
+          <input id="simRate" type="number" value="5" min="0" step="0.5" />
+        </label>
+        <button class="primary-button" type="button" id="runSimulation">Calculer</button>
+        <p class="simulation-result" id="simulationResult">
+          Ceci est une simulation educative, pas une promesse de rendement.
+        </p>
+      </form>
+    </dialog>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
